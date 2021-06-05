@@ -75,3 +75,7 @@ public function getCMSFields()
     return $fields;
 }
 ```
+4. output on the template
+(based on the $has_one relation in the example in step 3)
+
+`$Picture`
