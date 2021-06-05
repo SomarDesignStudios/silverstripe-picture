@@ -1,0 +1,8 @@
+---
+Name: cita-silverstripe-picture
+---
+SilverStripe\Admin\LeftAndMain:
+  extra_requirements_css:
+    - cita/silverstripe-picture:client/css/picture-field.css
+  extra_requirements_javascript:
+    - cita/silverstripe-picture:client/js/picture-field.js

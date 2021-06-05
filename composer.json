@@ -1,0 +1,24 @@
+{
+    "name": "cita/silverstripe-picture",
+    "description": "CitaNZ's SilverStripe picture object and field for SilverStripe 4",
+    "type": "silverstripe-vendormodule",
+    "homepage": "https://github.com/CITANZ/silverstripe-picture",
+    "license": "MIT",
+    "keywords": ["silverstripe picture field", "silverstripe picture object"],
+    "authors": [
+        {
+            "name": "Leo Chen",
+            "homepage": "https://www.leochen.co.nz"
+        }
+    ],
+    "require": {
+        "silverstripe/framework": "^4.0",
+        "symbiote/silverstripe-gridfieldextensions": "^3"
+    },
+    "extra": {
+        "expose": [
+            "client/css",
+            "client/js"
+        ]
+    }
+}
