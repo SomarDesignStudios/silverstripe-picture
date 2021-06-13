@@ -1,68 +1,134 @@
-.picture-field > .form__field-holder {
+.cms-edit-form .picture-field__uploader-group {
+  display: block;
+}
+
+@media (min-width: 992px) {
+  .cms-edit-form .picture-field__uploader-group {
+    padding: 0 20px;
+  }
+}
+
+.cms-edit-form .picture-field__uploader-group > .form__field-holder {
+  max-width: none !important;
+  flex: none !important;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
+  padding: 0 !important;
+  margin-left: -1.5385rem !important;
+  margin-right: -1.5385rem !important;
 }
- .picture-field > .form__field-holder .form-group.field.text {
+
+@media (min-width: 992px) {
+  .cms-edit-form .picture-field__uploader-group > .form__field-holder {
+    width: calc(100% + 40px) !important;
+  }
+}
+
+.cms-edit-form .picture-field__uploader-group > .form__field-holder .form-group.field.text {
   width: calc(100% + 1.5385rem * 2);
 }
- .picture-field > .form__field-holder .form-group.field.uploadfield {
+
+.cms-edit-form .picture-field__uploader-group > .form__field-holder .form-group.field.uploadfield {
   width: calc(100% / 3);
   margin: 0;
+  padding: 0 20px;
 }
- .picture-field > .form__field-holder .form-group.field.uploadfield > .form__field-label, .picture-field > .form__field-holder .form-group.field.uploadfield > .form__field-holder {
+
+.cms-edit-form .picture-field__uploader-group > .form__field-holder .form-group.field.uploadfield .uploadfield__upload-button,
+.cms-edit-form .picture-field__uploader-group > .form__field-holder .form-group.field.uploadfield .uploadfield__add-button {
+  white-space: nowrap;
+}
+
+.cms-edit-form .picture-field__uploader-group > .form__field-holder .form-group.field.uploadfield .uploadfield__droptext {
+  font-size: 12px;
+}
+
+.cms-container--split-mode .cms-edit-form .picture-field__uploader-group > .form__field-holder .form-group.field.uploadfield {
+  width: 100% !important;
+}
+
+@media (max-width: 575px) {
+  .cms-edit-form .picture-field__uploader-group > .form__field-holder .form-group.field.uploadfield,
+  .cms-container--split-mode .cms-edit-form .picture-field__uploader-group > .form__field-holder .form-group.field.uploadfield {
+    width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+
+}
+
+.cms-edit-form .picture-field__uploader-group > .form__field-holder .form-group.field.uploadfield > .form__field-label,
+.cms-edit-form .picture-field__uploader-group > .form__field-holder .form-group.field.uploadfield > .form__field-holder {
   padding-right: 0;
+  padding-left: 0;
 }
- .picture-field > .form__field-holder .form-group.field.uploadfield.first-uploader {
-  margin-left: -1.5385rem;
-}
- .picture-field > .form__field-holder .form-group.field.uploadfield .uploadfield__droptext:before {
+
+.cms-edit-form .picture-field__uploader-group > .form__field-holder .form-group.field.uploadfield .uploadfield__droptext:before {
   content: none;
 }
- .picture-field > .form__field-holder .form-group.field.uploadfield .uploadfield .uploadfield-item {
+
+.cms-edit-form .picture-field__uploader-group > .form__field-holder .form-group.field.uploadfield .uploadfield .uploadfield-item {
   flex-wrap: wrap;
   height: auto;
 }
- .picture-field > .form__field-holder .form-group.field.uploadfield .uploadfield .uploadfield-item__thumbnail, .picture-field > .form__field-holder .form-group.field.uploadfield .uploadfield .uploadfield-item__details, .picture-field > .form__field-holder .form-group.field.uploadfield .uploadfield .uploadfield-item__view-btn, .picture-field > .form__field-holder .form-group.field.uploadfield .uploadfield .uploadfield-item__remove-btn {
+
+.cms-edit-form .picture-field__uploader-group > .form__field-holder .form-group.field.uploadfield .uploadfield .uploadfield-item__thumbnail,
+.cms-edit-form .picture-field__uploader-group > .form__field-holder .form-group.field.uploadfield .uploadfield .uploadfield-item__details,
+.cms-edit-form .picture-field__uploader-group > .form__field-holder .form-group.field.uploadfield .uploadfield .uploadfield-item__view-btn,
+.cms-edit-form .picture-field__uploader-group > .form__field-holder .form-group.field.uploadfield .uploadfield .uploadfield-item__remove-btn {
   margin-right: 0;
 }
- .picture-field > .form__field-holder .form-group.field.uploadfield .uploadfield .uploadfield-item__thumbnail {
+
+.cms-edit-form .picture-field__uploader-group > .form__field-holder .form-group.field.uploadfield .uploadfield .uploadfield-item__thumbnail {
   width: 100%;
   height: 0;
   margin-right: 0;
   padding-top: 100%;
 }
- .picture-field > .form__field-holder .form-group.field.uploadfield .uploadfield .uploadfield-item__view-btn, .picture-field > .form__field-holder .form-group.field.uploadfield .uploadfield .uploadfield-item__remove-btn {
+
+.cms-edit-form .picture-field__uploader-group > .form__field-holder .form-group.field.uploadfield .uploadfield .uploadfield-item__view-btn,
+.cms-edit-form .picture-field__uploader-group > .form__field-holder .form-group.field.uploadfield .uploadfield .uploadfield-item__remove-btn {
   padding-right: 5px;
   padding-left: 5px;
 }
- .picture-field-gridfield .table {
+
+.picture-field-gridfield .table {
   width: 100%;
   min-width: 0;
   margin-right: 0;
   margin-left: 0;
 }
- .picture-field-gridfield .table .sortable-header th.main {
+
+.picture-field-gridfield .table .sortable-header th.main {
   width: 20px !important;
   padding-right: 0;
   padding-left: 0;
 }
- .picture-field-gridfield .table th:last-child, .picture-field-gridfield .table td:last-child {
+
+.picture-field-gridfield .table th:last-child,
+.picture-field-gridfield .table td:last-child {
   padding-right: 0.5rem;
 }
- .picture-field-gridfield .table td {
+
+.picture-field-gridfield .table td {
   padding-left: 0;
 }
- .picture-field-gridfield .table td.col-reorder .handle {
+
+.picture-field-gridfield .table td.col-reorder .handle {
   padding: 20px 3px 11px 0;
 }
- .picture-field-gridfield .table td.col-Text {
+
+.picture-field-gridfield .table td.col-Text {
   width: calc(100% - 413px);
 }
- .picture-field-gridfield .table td.col-Text dl {
+
+.picture-field-gridfield .table td.col-Text dl {
   max-width: 265px;
 }
- .picture-field-gridfield .table td.col-Text dl dd {
+
+.picture-field-gridfield .table td.col-Text dl dd {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
