@@ -56,6 +56,10 @@ class PictureField extends CompositeField
         $this->fieldList['UploaderGroup'] =$this->fields['UploaderGroup'];
         $this->fieldList['Caption'] =$this->fields['Caption'];
 
+        if (!empty($this->fields['PictureControl'])) {
+            $this->fieldList['PictureControl'] =$this->fields['PictureControl'];
+        }
+
         parent::__construct($this->fieldList);
 
         $this->setName($name);
