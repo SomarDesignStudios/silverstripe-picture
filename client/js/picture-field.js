@@ -19,7 +19,6 @@
           p.css('margin-top', '7px')
           p.html('This picture will be removed upon the page save/publish.<br />If you don\'t wish to remove the picture, just refresh the page now')
 
-          holder.append(input)
           holder.append(p)
         })
       }
