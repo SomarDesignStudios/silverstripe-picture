@@ -24,6 +24,7 @@ use SilverStripe\Forms\FormAction;
 class PictureField extends CompositeField
 {
     protected $fields = [];
+    protected $fieldList = [];
     protected $picture;
     protected $pictureTitle;
     protected $desktopImage;
@@ -51,7 +52,11 @@ class PictureField extends CompositeField
             $this->initSingleMode($name, $this->picture);
         }
 
-        parent::__construct($this->fields);
+        $this->fieldList['Title'] = $this->fields['Title'];
+        $this->fieldList['UploaderGroup'] =$this->fields['UploaderGroup'];
+        $this->fieldList['Caption'] =$this->fields['Caption'];
+
+        parent::__construct($this->fieldList);
 
         $this->setName($name);
         $this->setTitle($title ?? self::name_to_label($name));
@@ -218,6 +223,12 @@ class PictureField extends CompositeField
 
             $this->fields['PictureControl'] = FormAction::create(null, 'Remove')->setUseButtonTag('true')->addExtraClass('btn-remove-cita-picture btn btn-danger');
         }
+
+        $this->fields['UploaderGroup'] = CompositeField::create([
+            $this->fields['Desktop'],
+            $this->fields['Tablet'],
+            $this->fields['Phone'],
+        ])->addExtraClass('picture-field__uploader-group');
     }
 
     private function saveMany(&$data)
