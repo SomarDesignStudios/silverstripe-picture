@@ -60,6 +60,10 @@ class PictureField extends CompositeField
             $this->fieldList['PictureControl'] =$this->fields['PictureControl'];
         }
 
+        if (!empty($this->fields['GridField'])) {
+            $this->fieldList['GridField'] =$this->fields['GridField'];
+        }
+
         parent::__construct($this->fieldList);
 
         $this->setName($name);
