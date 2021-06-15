@@ -38,6 +38,7 @@ class PictureField extends CompositeField
     protected $picPhoneHeight;
     protected $manyMode = false;
     protected $performDelete = false;
+    protected $sortField = null;
 
     /** @phpstan-ignore-next-line */
     public function __construct($name, $title = null, $owner = null)
@@ -146,6 +147,15 @@ class PictureField extends CompositeField
         ;
     }
 
+    public function setSortField($fieldName)
+    {
+        if ($this->sortField) {
+            $this->sortField->setSortField($fieldName);
+        }
+
+        return $this;
+    }
+
     private function makeConfig()
     {
         $config = GridFieldConfig::create();
@@ -157,7 +167,7 @@ class PictureField extends CompositeField
         $config->addComponent(new GridField_ActionMenu());
         $config->addComponent($pagination = new GridFieldPaginator(null));
         $config->addComponent(new GridFieldDetailForm());
-        $config->addComponent(GridFieldOrderableRows::create('Sort'));
+        $config->addComponent($this->sortField = GridFieldOrderableRows::create('Sort'));
 
         $columns->setDisplayFields([
             'Desktop.CMSThumbnail' => 'Desktop',
