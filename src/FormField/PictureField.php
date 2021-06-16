@@ -39,6 +39,7 @@ class PictureField extends CompositeField
     protected $manyMode = false;
     protected $performDelete = false;
     protected $sortField = null;
+    protected $additionalWriteFields = [];
 
     /** @phpstan-ignore-next-line */
     public function __construct($name, $title = null, $owner = null)
@@ -74,6 +75,13 @@ class PictureField extends CompositeField
 
         if ($this->manyMode) {
             $this->addExtraClass('multi-mode');
+        }
+    }
+
+    public function setAdditionalWriteFields(&$fieldMap)
+    {
+        if (!empty($fieldMap)) {
+            $this->additionalWriteFields = $fieldMap;
         }
     }
 
@@ -284,7 +292,7 @@ class PictureField extends CompositeField
         $tablet  = !empty($tablet)  && !empty($tablet['Files']) ? $tablet['Files'][0] : null;
         $phone   = !empty($phone)   && !empty($phone['Files']) ? $phone['Files'][0] : null;
 
-        $pic = $pic->update([
+        $pic = $pic->update(array_merge([
             'DesktopWidth'  => $this->picDesktopWidth,
             'DesktopHeight' => $this->picDesktopHeight,
             'TabletWidth'   => $this->picTabletWidth,
@@ -296,7 +304,7 @@ class PictureField extends CompositeField
             'DesktopID'     => $desktop,
             'TabletID'      => $tablet,
             'PhoneID'       => $phone,
-        ]);
+        ], $this->additionalWriteFields));
 
         if ($return) {
             return $pic->write();
