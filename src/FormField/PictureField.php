@@ -39,7 +39,8 @@ class PictureField extends CompositeField
     protected $manyMode = false;
     protected $performDelete = false;
     protected $sortField = null;
-    protected $additionalWriteFields = [];
+    protected $additionalDBFields = [];
+    protected $additionalDBMappedValues = [];
 
     /** @phpstan-ignore-next-line */
     public function __construct($name, $title = null, $owner = null)
@@ -78,11 +79,13 @@ class PictureField extends CompositeField
         }
     }
 
-    public function setAdditionalWriteFields(&$fieldMap)
+    public function setAdditionalDBFields($fields)
     {
-        if (!empty($fieldMap)) {
-            $this->additionalWriteFields = $fieldMap;
+        if (!empty($fields)) {
+            $this->additionalDBFields = $fields;
         }
+
+        return $this;
     }
 
     public function setDimensions($dimensions)
@@ -124,6 +127,13 @@ class PictureField extends CompositeField
         if ($data && isset($data['pictureTitle_' . $this->name]) && isset($data['pictureCaption_' . $this->name])) {
             $this->pictureTitle   = $data['pictureTitle_' . $this->name];
             $this->pictureCaption = $data['pictureCaption_' . $this->name];
+
+            foreach ($this->additionalDBFields as $fieldName) {
+                if (!empty($data[$fieldName])) {
+                    $this->additionalDBMappedValues[$fieldName] = $data[$fieldName];
+                }
+            }
+
         } else {
             $this->performDelete = true;
         }
@@ -248,6 +258,7 @@ class PictureField extends CompositeField
             }
 
             $this->fields['PictureControl'] = FormAction::create(null, 'Remove')->setUseButtonTag('true')->addExtraClass('btn-remove-cita-picture btn btn-danger');
+            $this->fields['PictureControl']->setName('RemovePictureButton');
         }
 
         $this->fields['UploaderGroup'] = CompositeField::create([
@@ -304,7 +315,7 @@ class PictureField extends CompositeField
             'DesktopID'     => $desktop,
             'TabletID'      => $tablet,
             'PhoneID'       => $phone,
-        ], $this->additionalWriteFields));
+        ], $this->additionalDBMappedValues));
 
         if ($return) {
             return $pic->write();
