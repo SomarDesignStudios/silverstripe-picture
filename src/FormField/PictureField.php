@@ -129,7 +129,7 @@ class PictureField extends CompositeField
             $this->pictureCaption = $data['pictureCaption_' . $this->name];
 
             foreach ($this->additionalDBFields as $fieldName) {
-                if (!empty($data[$fieldName])) {
+                if (isset($data[$fieldName])) {
                     $this->additionalDBMappedValues[$fieldName] = $data[$fieldName];
                 }
             }
