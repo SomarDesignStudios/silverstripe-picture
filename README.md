@@ -79,3 +79,46 @@ public function getCMSFields()
 (based on the $has_one relation in the example in step 3)
 
 `$Picture`
+
+----
+### Advanced useage: adding additional fields
+```
+...
+use SilverStripe\Forms\OptionsetField;
+...
+private static array $has_one = [
+    Image::class,
+];
+...
+$fields->addFieldToTab(
+    'Root.Pictures',
+    $pictureField = PictureField::create('Image', 'Image', $this)
+        ->setFolderName('content')
+        ->setAdditionalDBFields(['PictureHolderStyle'])
+        ->setDimensions([
+            'Desktop' => [
+                'Width' => 320,
+                'Height' => 320,
+            ],
+            'Tablet' => [
+                'Width' => 240,
+                'Height' => 240,
+            ],
+            'Phone' => [
+                'Width' => 120,
+                'Height' => 120,
+            ],
+        ])
+);
+
+$pictureField->insertBefore(
+    'RemovePictureButton',
+    OptionsetField::create(
+        'PictureHolderStyle',
+        'Image theme',
+        PictureExtension::PictureHolderStyles,
+        $this->Image()->PictureHolderStyle
+    )
+);
+
+```
