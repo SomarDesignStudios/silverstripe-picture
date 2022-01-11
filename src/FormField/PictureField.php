@@ -258,7 +258,7 @@ class PictureField extends CompositeField
             }
 
             $this->fields['PictureControl'] = FormAction::create(null, 'Remove')->setUseButtonTag('true')->addExtraClass('btn-remove-cita-picture btn btn-danger');
-            $this->fields['PictureControl']->setName('RemovePictureButton');
+            $this->fields['PictureControl']->setName('RemovePictureButton_' . $name);
         }
 
         $this->fields['UploaderGroup'] = CompositeField::create([
